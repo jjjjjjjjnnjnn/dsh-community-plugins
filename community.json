@@ -1720,8 +1720,8 @@
     "npm": "client-resume-button",
     "category": "ui",
     "subcategory": "chat"
-  },
-  {
+  }
+,  {
     "id": "dsh-version-guard",
     "name": "DSH 版本守卫",
     "nameEn": "DSH Version Guard",
@@ -1731,8 +1731,8 @@
     "repo": "https://github.com/skyjjgw/dsh-version-guard",
     "category": "tools",
     "subcategory": "dev"
-  },
-  {
+  }
+,  {
     "id": "dsh-connect-minimaxcode",
     "name": "MiniMax Code 模型接入",
     "nameEn": "MiniMax Code Model Connect",
