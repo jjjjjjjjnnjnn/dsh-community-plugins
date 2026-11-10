@@ -70,6 +70,17 @@
     "subcategory": "api"
   },
   {
+    "id": "dsh-ai-terminal-pet",
+    "name": "AI 终端宠物浮窗",
+    "nameEn": "AI Terminal Pet Overlay",
+    "author": "jjjjjjjjnnjnn",
+    "description": "把 DeepSeek Harness 的会话状态接到 AI Terminal Pet 桌面浮窗：一个常驻置顶的小窗显示每个会话是在跑、在等你审批、出错还是已完成，并能与 Claude Code、OpenCode、Antigravity 的会话汇总在同一个面板里，点一下就跳到对应的终端窗口。仅 Windows：浮窗 exe 随包安装，不额外装 Go 工具链，没有 npm 依赖，浮窗缺失时插件也不会影响宿主。",
+    "descriptionEn": "Mirrors DeepSeek Harness session state onto the AI Terminal Pet desktop overlay: a small always-on-top Win32 window shows whether each session is working, waiting for approval, failed or finished, and it lists Claude Code, OpenCode and Antigravity sessions in the same panel, with a one-click jump to the terminal window. Windows only: the overlay exe ships inside the package, so no Go toolchain and no npm dependencies are needed, and the bundle cannot break the host when the overlay is missing.",
+    "repo": "https://github.com/jjjjjjjjnnjnn/ai-terminal-pet",
+    "category": "integration",
+    "subcategory": "bridge"
+  },
+  {
     "id": "dsh-annotation",
     "name": "选中批注",
     "nameEn": "Selection Annotation",
