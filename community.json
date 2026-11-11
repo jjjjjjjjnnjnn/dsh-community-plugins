@@ -70,6 +70,17 @@
     "subcategory": "api"
   },
   {
+    "id": "dsh-ai-terminal-pet",
+    "name": "AI 终端宠物浮窗",
+    "nameEn": "AI Terminal Pet Overlay",
+    "author": "jjjjjjjjnnjnn",
+    "description": "把 DeepSeek Harness 的会话状态接到 AI Terminal Pet 桌面浮窗：一个常驻置顶的小窗显示每个会话是在跑、在等你审批、出错还是已完成，并能与 Claude Code、OpenCode、Antigravity 的会话汇总在同一个面板里，点一下就跳到对应的终端窗口。仅 Windows：浮窗 exe 随包安装，不额外装 Go 工具链，没有 npm 依赖，浮窗缺失时插件也不会影响宿主。",
+    "descriptionEn": "Mirrors DeepSeek Harness session state onto the AI Terminal Pet desktop overlay: a small always-on-top Win32 window shows whether each session is working, waiting for approval, failed or finished, and it lists Claude Code, OpenCode and Antigravity sessions in the same panel, with a one-click jump to the terminal window. Windows only: the overlay exe ships inside the package, so no Go toolchain and no npm dependencies are needed, and the bundle cannot break the host when the overlay is missing.",
+    "repo": "https://github.com/jjjjjjjjnnjnn/ai-terminal-pet",
+    "category": "integration",
+    "subcategory": "bridge"
+  },
+  {
     "id": "dsh-annotation",
     "name": "选中批注",
     "nameEn": "Selection Annotation",
@@ -115,6 +126,18 @@
     "npm": "dsh-archived-chats",
     "category": "utility",
     "subcategory": "cleanup"
+  },
+  {
+    "id": "dsh-artifacts",
+    "name": "产物架",
+    "nameEn": "Artifact Shelf",
+    "author": "modusensus",
+    "description": "侧边栏产物架：把会话交付过的图片、视频、文件和链接收进一处，按 SHA-256 内容哈希去重；五个分类标签带计数、关键词搜索、视频缩略图、灯箱查看、手动收藏链接、粘贴图片、上传文件（≤25MB）、首次启动回填历史会话日志，并提供 save_artifact 工具供模型主动收藏。",
+    "descriptionEn": "A sidebar artifact shelf: it collects the images, videos, files and links a session delivers into one panel, deduplicated by SHA-256 content hash. Five filter tabs with counts, keyword search, video thumbnails, a lightbox, manual link saving, image paste, uploads up to 25 MB, a one-time backfill of past session logs, and a save_artifact tool the model can call.",
+    "repo": "https://github.com/modusensus/dsh-artifacts",
+    "npm": "@modusensus/dsh-artifacts",
+    "category": "ui",
+    "subcategory": "panel"
   },
   {
     "id": "dsh-as-aistudio",
@@ -447,6 +470,18 @@
     "repo": "https://github.com/LarryE135/dsh-flash-presets",
     "category": "agent",
     "subcategory": "preset"
+  },
+  {
+    "id": "dsh-free-search",
+    "name": "免费搜索",
+    "nameEn": "Free Search",
+    "author": "DDDMUC",
+    "description": "免费多引擎网络搜索：37 个引擎可选，默认自动回退链实际覆盖 28 个（5 个 HTML SERP 引擎默认不参与，OpenAI / Gemini / Claude 与 Metaso 四个按次计费引擎只在显式点名时运行）；支持时间过滤、多源并发、平台搜索、web_fetch 与网页设置面板。启动时会向 cloudflare、ip.sb、ipinfo 探测出口地区来选择默认引擎，查询会发送给所选第三方引擎。安装后会把 profile 的 cordis.patch.yml 中 web.searchProvider 接管为 ddg、web.fetchProvider 接管为 fs-quality-fetch；停用或卸载不会自动还原，需要手动删除 - id: web 下的这两行，否则宿主会报 configured web provider \"ddg\" is not registered。与其它设置 searchProvider 的搜索插件互斥，最后生效的一层决定实际搜索。",
+    "descriptionEn": "Free multi-engine web search: 37 engines available, with 28 actually covered by the default auto-fallback chain (the 5 HTML SERP engines stay out by default, and the per-call billed OpenAI / Gemini / Claude / Metaso engines run only when explicitly named); time filtering, concurrent multi-source search, platform search, web_fetch and a web settings panel. On startup it probes the egress region via cloudflare, ip.sb and ipinfo to pick the default engine, and queries are sent to the selected third-party engines. Installation takes over web.searchProvider as ddg and web.fetchProvider as fs-quality-fetch in the profile's cordis.patch.yml; disabling or uninstalling does not restore them, so remove those two lines under - id: web or the host reports configured web provider \"ddg\" is not registered. It is mutually exclusive with other plugins that set searchProvider; the last applied layer decides the actual search.",
+    "repo": "https://github.com/DDDMUC/dsh-free-search",
+    "npm": "dsh-free-search",
+    "category": "tools",
+    "subcategory": "dev"
   },
   {
     "id": "dsh-friendly-steps",
@@ -944,6 +979,18 @@
     "subcategory": "dev"
   },
   {
+    "id": "dsh-plugin-upgrader",
+    "name": "插件版本升级",
+    "nameEn": "Plugin Version Upgrader",
+    "author": "zuwenyin",
+    "description": "在插件页新增「版本」标签：一键与多选升级都走插件管理器自己的安装路径，默认就地替换依赖、不卸载插件、启用状态不丢（profile 改不了时才退回先卸载再装，日志写明走的是哪条）；每一步的用时、阶段、原始 pnpm 日志与取消；已发布版本列表（最多列最新 80 个）可一键切换，装不了的版本按你正在跑的 DSH 标出来并禁用；镜像落后于上游时列出缺口；安装源可自己选（官方源 / 大陆镜像 / 私有源，选择写进 profile）。",
+    "descriptionEn": "Adds a Versions tab to the Plugins page: on-demand one-click and multi-select upgrades run through the plugin manager's own install path and replace the dependency in place by default, so the bundle stays loaded and keeps its enabled state (only when the profile manifest cannot be rewritten does it fall back to uninstall-then-install, and the log says which path was taken); per-step elapsed time, phase, the raw pnpm log and cancel; the published version list (newest 80 shown) with one-click switching, where a version the running DSH cannot install is flagged and its button disabled; the versions a configured mirror is missing; and a user-selectable npm registry saved in the profile.",
+    "repo": "https://github.com/zuwenyin/dsh-plugin-upgrader",
+    "npm": "dsh-plugin-upgrader",
+    "category": "tools",
+    "subcategory": "dev"
+  },
+  {
     "id": "dsh-postman",
     "name": "接口调试",
     "nameEn": "API Debugger",
@@ -1365,6 +1412,18 @@
     "npm": "dsh-workspace-api",
     "category": "knowledge",
     "subcategory": "qa"
+  },
+  {
+    "id": "dsh-workspace-tints",
+    "name": "工作区色阶",
+    "nameEn": "Workspace Tints",
+    "author": "Veduis",
+    "description": "为侧栏中的每个工作区从同一条由暖到冷的“白瓷”色阶取一个固定色调，轻染其标题行，并在其会话旁画一条细轨；工作区名作为分组标题，会话缩进其下；已完成但未读的会话整行染绿。强度可调，关闭染色后层级与完成提示仍在。",
+    "descriptionEn": "Gives every Workspace in the sidebar a stable tint from one warm-to-cool ramp of whites, washing its header and drawing a thin rail beside its Sessions. Workspace names become section headings with their Sessions indented beneath, and a Session that finished unread turns its whole row green. Intensity is adjustable, and the hierarchy plus the finished indicator survive with tints off.",
+    "repo": "https://github.com/Veduis/dsh-workspace-tints",
+    "npm": "dsh-workspace-tints",
+    "category": "ui",
+    "subcategory": "panel"
   },
   {
     "id": "dsh-worktime-board",
